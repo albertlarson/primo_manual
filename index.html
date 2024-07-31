@@ -27,58 +27,66 @@
         margin-left: 20px;
         cursor: pointer;
     }
-    /* .directory {
-        font-weight: bold;
-    } */
+    .nested {
+        display: none;
+        margin-left: 20px;
+    }
+    .active {
+        display: block;
+    }
 </style>
 </head>
 <body>
 
-    <div id="sidebar">
-        <div class="directory" onclick="showContent('Chatham_Clean')">Chatham_Clean/</div>
-        <div class="directory" style="margin-left: 20px;">
-            <div class="directory" onclick="showContent('bin')">bin/</div>
-            <div class="directory" style="margin-left: 20px;">
-                <div class="file" onclick="showContent('primo_acc.exe')">primo_acc.exe</div></div>
-            <div class="file" onclick="showContent('build.sh')">build.sh</div>
-            <div class="directory">ChathamCounty/
-                <div class="file" onclick="showContent('.bound')">.bound</div>
-                <div class="file" onclick="showContent('.grid')">.grid</div>
-                <div class="file" onclick="showContent('.input')">.input</div>
-                <div class="file" onclick="showContent('.landcover')">.landcover</div>
-                <div class="file" onclick="showContent('_metadata.mat')">_metadata.mat</div>
-                <div class="file" onclick="showContent('.monstation')">.monstation</div>
-                <div class="file" onclick="showContent('.pointsource')">.pointsource</div>
-                <div class="directory">precip/
-                    <div class="file" onclick="showContent('precip.*.flt')">precip.*.flt</div>
-                    <div class="file" onclick="showContent('precip.hdr')">precip.hdr</div>
-                </div>
-                <div class="directory">raster/
-                    <div class="file" onclick="showContent('.lc.fit')">.lc.fit</div>
-                    <div class="file" onclick="showContent('.mask.flt')">.mask.flt</div>
-                    <div class="file" onclick="showContent('.z.flt')">.z.flt</div>
-                </div>
-                <div class="directory">timeseries/
-                </div>
-            </div>
-            <div class="file" onclick="showContent('cleanprimo.sh')">cleanprimo.sh</div>
-            <div class="file" onclick="showContent('makefile')">makefile</div>
-            <div class="file" onclick="showContent('primoprep_Chatham.m')">primoprep_Chatham.m</div>
-            <div class="file" onclick="showContent('primoprep_Chatham.sh')">primoprep_Chatham.sh</div>
-            <div class="file" onclick="showContent('primotiffmaker_gpu.m')">primotiffmaker_gpu.m</div>
-            <div class="file" onclick="showContent('primotiffmaker_gpu_maxoutput.m')">primotiffmaker_gpu_maxoutput.m</div>
-            <div class="file" onclick="showContent('primotiffmaker_gpu_maxoutput.sh')">primotiffmaker_gpu_maxoutput.sh</div>
-            <div class="file" onclick="showContent('primotiffmaker_gpu.sh')">primotiffmaker_gpu.sh</div>
-            <div class="file" onclick="showContent('primovizhd_gpu.m')">primovizhd_gpu.m</div>
-            <div class="file" onclick="showContent('primovizhd_gpu.sh')">primovizhd_gpu.sh</div>
-            <div class="file" onclick="showContent('readbinary.m')">readbinary.m</div>
-            <div class="file" onclick="showContent('run.sh')">run.sh</div>
-            <div class="directory">src/
-                <div class="file" onclick="showContent('primo_gpu.f90')">primo_gpu.f90</div>
-            </div>
-            <div class="file" onclick="showContent('writebinary.m')">writebinary.m</div>
+<div id="sidebar">
+    <div class="directory" onclick="toggleVisibility('Chatham_Clean')">Chatham_Clean/</div>
+    <div class="nested" id="Chatham_Clean">
+        <div class="directory" onclick="toggleVisibility('bin')">bin/</div>
+        <div class="nested" id="bin">
+            <div class="file" onclick="showContent('primo_acc.exe')">primo_acc.exe</div>
         </div>
+        <div class="file" onclick="showContent('build.sh')">build.sh</div>
+        <div class="directory" onclick="toggleVisibility('ChathamCounty')">ChathamCounty/</div>
+        <div class="nested" id="ChathamCounty">
+            <div class="file" onclick="showContent('.bound')">.bound</div>
+            <div class="file" onclick="showContent('.grid')">.grid</div>
+            <div class="file" onclick="showContent('.input')">.input</div>
+            <div class="file" onclick="showContent('.landcover')">.landcover</div>
+            <div class="file" onclick="showContent('_metadata.mat')">_metadata.mat</div>
+            <div class="file" onclick="showContent('.monstation')">.monstation</div>
+            <div class="file" onclick="showContent('.pointsource')">.pointsource</div>
+            <div class="directory" onclick="toggleVisibility('precip')">precip/</div>
+            <div class="nested" id="precip">
+                <div class="file" onclick="showContent('precip.*.flt')">precip.*.flt</div>
+                <div class="file" onclick="showContent('precip.hdr')">precip.hdr</div>
+            </div>
+            <div class="directory" onclick="toggleVisibility('raster')">raster/</div>
+            <div class="nested" id="raster">
+                <div class="file" onclick="showContent('.lc.fit')">.lc.fit</div>
+                <div class="file" onclick="showContent('.mask.flt')">.mask.flt</div>
+                <div class="file" onclick="showContent('.z.flt')">.z.flt</div>
+            </div>
+            <div class="directory" onclick="toggleVisibility('timeseries')">timeseries/</div>
+        </div>
+        <div class="file" onclick="showContent('cleanprimo.sh')">cleanprimo.sh</div>
+        <div class="file" onclick="showContent('makefile')">makefile</div>
+        <div class="file" onclick="showContent('primoprep_Chatham.m')">primoprep_Chatham.m</div>
+        <div class="file" onclick="showContent('primoprep_Chatham.sh')">primoprep_Chatham.sh</div>
+        <div class="file" onclick="showContent('primotiffmaker_gpu.m')">primotiffmaker_gpu.m</div>
+        <div class="file" onclick="showContent('primotiffmaker_gpu_maxoutput.m')">primotiffmaker_gpu_maxoutput.m</div>
+        <div class="file" onclick="showContent('primotiffmaker_gpu_maxoutput.sh')">primotiffmaker_gpu_maxoutput.sh</div>
+        <div class="file" onclick="showContent('primotiffmaker_gpu.sh')">primotiffmaker_gpu.sh</div>
+        <div class="file" onclick="showContent('primovizhd_gpu.m')">primovizhd_gpu.m</div>
+        <div class="file" onclick="showContent('primovizhd_gpu.sh')">primovizhd_gpu.sh</div>
+        <div class="file" onclick="showContent('readbinary.m')">readbinary.m</div>
+        <div class="file" onclick="showContent('run.sh')">run.sh</div>
+        <div class="directory" onclick="toggleVisibility('src')">src/</div>
+        <div class="nested" id="src">
+            <div class="file" onclick="showContent('primo_gpu.f90')">primo_gpu.f90</div>
+        </div>
+        <div class="file" onclick="showContent('writebinary.m')">writebinary.m</div>
     </div>
+</div>
 
 <div id="content">
     <iframe id="contentFrame" style="width: 100%; height: 100%;" frameborder="0"></iframe>
@@ -86,39 +94,80 @@
 
 <script>
     const contentData = {
-        'Chatham_Clean': `Chatham_Clean is the top most level of the project,
-        and encompasses everything needed to run a PRIMo model.`,
+    'Chatham_Clean': `<b>Chatham_Clean</b><br><br>Chatham_Clean is the topmost level of the project, encompassing everything needed to run a PRIMo model.`,
+    
+    'bin': `<b>bin</b><br><br>This is the content for bin.`,
 
-        'bin': 'This is the content for bin/',
-        'primo_acc.exe': 'This is the content for primo_acc.exe',
-        'build.sh': 'This is the content for build.sh',
-        '.bound': 'This is the content for .bound',
-        '.grid': 'This is the content for .grid',
-        '.input': 'This is the content for .input',
-        '.landcover': 'This is the content for .landcover',
-        '_metadata.mat': 'This is the content for _metadata.mat',
-        '.monstation': 'This is the content for .monstation',
-        '.pointsource': 'This is the content for .pointsource',
-        'precip.*.flt': 'This is the content for precip.*.flt',
-        'precip.hdr': 'This is the content for precip.hdr',
-        '.lc.fit': 'This is the content for .lc.fit',
-        '.mask.flt': 'This is the content for .mask.flt',
-        '.z.flt': 'This is the content for .z.flt',
-        'cleanprimo.sh': 'This is the content for cleanprimo.sh',
-        'makefile': `The makefile works in tandem with build.sh and `,
-        'primoprep_Chatham.m': 'This is the content for primoprep_Chatham.m',
-        'primoprep_Chatham.sh': 'This is the content for primoprep_Chatham.sh',
-        'primotiffmaker_gpu.m': 'This is the content for primotiffmaker_gpu.m',
-        'primotiffmaker_gpu_maxoutput.m': 'This is the content for primotiffmaker_gpu_maxoutput.m',
-        'primotiffmaker_gpu_maxoutput.sh': 'This is the content for primotiffmaker_gpu_maxoutput.sh',
-        'primotiffmaker_gpu.sh': 'This is the content for primotiffmaker_gpu.sh',
-        'primovizhd_gpu.m': 'This is the content for primovizhd_gpu.m',
-        'primovizhd_gpu.sh': 'This is the content for primovizhd_gpu.sh',
-        'readbinary.m': 'This is the content for readbinary.m',
-        'run.sh': 'This is the content for run.sh',
-        'primo_gpu.f90': 'This is the content for primo_gpu.f90',
-        'writebinary.m': 'This is the content for writebinary.m'
-    };
+    'primo_acc.exe': `<b>primo_acc.exe</b><br><br>This is the PRIMo executable, essentially the 
+    program that runs the model. The file is created by makefile,
+    primo_gpu.f90, and build.sh files`,
+
+    'build.sh': `<b>build.sh</b><br><br>This file works with the makefile and .f90 file 
+    to create the runnable PRIMo program found in Chatham_Clean/bin/primo_acc.exe`,
+    
+    '.bound': `<b>.bound</b><br><br>This is the content for .bound`,
+    
+    '.grid': `<b>.grid</b><br><br>This is the content for .grid`,
+    
+    '.input': `<b>.input</b><br><br>This is the content for .input`,
+    
+    '.landcover': `<b>.landcover</b><br><br>This is the content for .landcover`,
+    
+    '_metadata.mat': `<b>_metadata.mat</b><br><br>This is the content for _metadata.mat`,
+    
+    '.monstation': `<b>.monstation</b><br><br>This is the content for .monstation`,
+    
+    '.pointsource': `<b>.pointsource</b><br><br>This is the content for .pointsource`,
+    
+    'precip.*.flt': `<b>precip.*.flt</b><br><br>This is the content for precip.*.flt`,
+    
+    'precip.hdr': `<b>precip.hdr</b><br><br>This is the content for precip.hdr`,
+    
+    '.lc.fit': `<b>.lc.fit</b><br><br>This is the content for .lc.fit`,
+    
+    '.mask.flt': `<b>.mask.flt</b><br><br>This is the content for .mask.flt`,
+    
+    '.z.flt': `<b>.z.flt</b><br><br>This is the content for .z.flt`,
+    
+    'cleanprimo.sh': `<b>cleanprimo.sh</b><br><br>Cleanprimo is a utility for cleaning the file structure
+    after a PRIMo model run`,
+    
+    'makefile': `<b>makefile</b><br><br>The makefile controls compiling of PRIMo components into an 
+    executable.`,
+    
+    'primoprep_Chatham.m': `<b>primoprep_Chatham.m</b><br><br>Generates model domain DEM, landcover layer, and mask file which
+    represents an upscaled area grid.<br><br>Mask file is the grid over which the model performs 
+    its computations.<br><br><b>Note:</b> DEM and landcover layers use the original resolution of the data 
+    (3 meters in the case of Chatham County), but mask uses upscaled resolution that is controlled by 
+    the up-scale-factor (USF). In the instance of Chatham County, USF is 10 meaning the mask grid is 30m resolution.`,
+    
+    'primoprep_Chatham.sh': `<b>primoprep_Chatham.sh</b><br><br>Runs primoprep_Chatham.m on the cluster`,
+    
+    'primotiffmaker_gpu.m': `<b>primotiffmaker_gpu.m</b><br><br>Allows the export of individual time dependent outputs from the PRIMo run.
+    <br><br>For example, if PRIMo is setup to save outputs at an hourly rate during a single day (24hrs) 
+    simulation, there will be 24 time dependent outputs that <u>can</u> be generated with this script.<br><br>
+    These can include water depth or water surface elevation, or the flow direction components.<br><br>
+    What one can output will depend on how PRIMo is configured in the .input file. If PRIMo is setup
+    to only export water depth, then only water depth outputs can be post-processed.`,
+    
+    'primotiffmaker_gpu_maxoutput.m': `<b>primotiffmaker_gpu_maxoutput.m</b><br><br>Postprocessing file that iterates over all saved outputs from `,
+    
+    'primotiffmaker_gpu_maxoutput.sh': `<b>primotiffmaker_gpu_maxoutput.sh</b><br><br>Runs primotiffmaker_gpu_maxoutput.m on the cluster`,
+    
+    'primotiffmaker_gpu.sh': `<b>primotiffmaker_gpu.sh</b><br><br>Runs primotiffmaker_gpu.m on the cluster`,
+    
+    'primovizhd_gpu.m': `<b>primovizhd_gpu.m</b><br><br>Creates coarse quality animations and graphics of the outputs from the PRIMo model`,
+    
+    'primovizhd_gpu.sh': `<b>primovizhd_gpu.sh</b><br><br>Runs primovizhd_gpu.m on the cluster`,
+    
+    'readbinary.m': `<b>readbinary.m</b><br><br>This is a companion to the pre-processing and post-processing matlab scripts.`,
+    
+    'run.sh': `<b>run.sh</b><br><br>This is the content for run.sh`,
+    
+    'primo_gpu.f90': `<b>primo_gpu.f90</b><br><br>This is the heart of the PRIMo model.`,
+    
+    'writebinary.m': `<b>writebinary.m</b><br><br>This is a companion to the pre-processing and post-processing matlab scripts.`
+};
 
     function showContent(file) {
         const iframe = document.getElementById('contentFrame');
@@ -126,6 +175,16 @@
         const blob = new Blob([content], { type: 'text/html' });
         iframe.src = URL.createObjectURL(blob);
     }
+
+    function toggleVisibility(id) {
+        var element = document.getElementById(id);
+        if (element.classList.contains('active')) {
+            element.classList.remove('active');
+        } else {
+            element.classList.add('active');
+        }
+    }
+
     window.onload = function() {
         showContent('Chatham_Clean');
     }
