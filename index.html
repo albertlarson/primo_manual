@@ -88,6 +88,7 @@
     </div>
 </div>
 
+
 <div id="content">
     <iframe id="contentFrame" style="width: 100%; height: 100%;" frameborder="0"></iframe>
 </div>
@@ -99,7 +100,7 @@
     'bin': `<b>bin</b><br><br>This is the content for bin.`,
 
     'primo_acc.exe': `<b>primo_acc.exe</b><br><br>This is the PRIMo executable, essentially the 
-    program that runs the model. The file is created by makefile,
+    program that runs the model. The file is created by <a href="#" class="content-link" data-file="makefile">makefile</a>,
     primo_gpu.f90, and build.sh files`,
 
     'build.sh': `<b>build.sh</b><br><br>This file works with the makefile and .f90 file 
@@ -141,8 +142,10 @@
     (3 meters in the case of Chatham County), but mask uses upscaled resolution that is controlled by 
     the up-scale-factor (USF). In the instance of Chatham County, USF is 10 meaning the mask grid is 30m resolution.`,
     
-    'primoprep_Chatham.sh': `<b>primoprep_Chatham.sh</b><br><br>Runs primoprep_Chatham.m on the cluster`,
-    
+    'primoprep_Chatham.sh': `<b>primoprep_Chatham.sh</b><br><br>Runs 
+    <a href="#" class="content-link" data-file="primoprep_Chatham.m">primoprep_Chatham.m</a> 
+    on the cluster`,
+
     'primotiffmaker_gpu.m': `<b>primotiffmaker_gpu.m</b><br><br>Allows the export of individual time dependent outputs from the PRIMo run.
     <br><br>For example, if PRIMo is setup to save outputs at an hourly rate during a single day (24hrs) 
     simulation, there will be 24 time dependent outputs that <u>can</u> be generated with this script.<br><br>
@@ -169,7 +172,7 @@
     'writebinary.m': `<b>writebinary.m</b><br><br>This is a companion to the pre-processing and post-processing matlab scripts.`
 };
 
-    function showContent(file) {
+function showContent(file) {
         const iframe = document.getElementById('contentFrame');
         const content = contentData[file] || 'Content not available.';
         const blob = new Blob([content], { type: 'text/html' });
@@ -184,6 +187,18 @@
             element.classList.add('active');
         }
     }
+
+    // Event delegation for content links
+    document.getElementById('contentFrame').addEventListener('load', function() {
+        const iframeDocument = this.contentDocument || this.contentWindow.document;
+        iframeDocument.body.addEventListener('click', function(event) {
+            if (event.target.classList.contains('content-link')) {
+                event.preventDefault();
+                const file = event.target.getAttribute('data-file');
+                showContent(file);
+            }
+        });
+    });
 
     window.onload = function() {
         showContent('Chatham_Clean');
